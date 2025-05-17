@@ -1,0 +1,34 @@
+using System;
+using Module1;
+using Module2;
+
+
+namespace MatrixSwapRows
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите размеры матрицы (n m):");
+            int n = int.Parse(Console.ReadLine());
+            int m = int.Parse(Console.ReadLine());
+
+            double[,] matrix = MatrixOperations.GenerateMatrix(n, m);
+
+            Console.WriteLine("Исходная матрица:");
+            MatrixOperations.PrintMatrix(matrix);
+
+            (int maxRow, int minRow) = FindRows.FindRowsWithMaxAndMinElement(matrix);
+
+
+            MatrixOperations.SwapRows(matrix, maxRow, minRow);
+
+            Console.WriteLine("Матрица после обмена строк:");
+            MatrixOperations.PrintMatrix(matrix);
+
+
+        }
+    
+        
+    }
+}
